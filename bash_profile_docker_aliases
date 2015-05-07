@@ -1,0 +1,60 @@
+# Docker Machine
+alias dmachine='cd ~/Downloads/dmachine'
+alias dm='sudo docker-machine '
+alias dml='docker-machine ls '
+alias devstar='docker-machine start dev'
+alias denv='env | grep  DOCKER'
+alias dkenv='eval "$(sudo docker-machine env dev)"'
+alias dmc='docker-machine create '
+alias dmip='docker-machine ip '
+alias dmub='docker run -d -p ubuntu /bin/bash'
+alias dmstar='docker-machine start '
+alias dmstop='docker-machine stop '
+alias mstar='docker-machine start '
+alias mstop='docker-machine stop '
+
+#Get IP addresses
+dockexecl() { docker exec -i -t $(docker ps -l -q) bash ;}
+dockexec() { docker exec -i -t $@ bash ;}
+alias dockip='docker inspect --format "{{ .NetworkSettings.IPAddress }}"'
+alias dockipl='docker inspect --format "{{ .NetworkSettings.IPAddress }}" $(docker ps -q)'
+alias dip='docker inspect --format "{{ .NetworkSettings.IPAddress }}" '
+alias dipl='docker inspect --format "{{ .NetworkSettings.IPAddress }}" $(docker ps -q)'
+
+# Start/Stop the last container created
+alias mstar1='docker-machine start $(docker-machine ls | tail -1 | awk "{print $1}")'
+alias mstop1='docker-machine stop $(docker-machine ls | tail -1 | awk "{print $1}")'
+alias dmk='docker-machine kill'
+
+# Inspect the last container created
+alias dmin='docker-machine inspect $(docker-machine ls | tail -1 | awk "{print $1}")'
+
+# Remove the last container created
+alias dmrm='docker-machine rm $(docker-machine ls | tail -1 | awk "{print $1}")'
+
+# Docker Engine aliases
+alias d='docker '
+alias di='docker images'
+alias di5='docker images | head -n5'
+alias dl='docker logs '
+alias dri='docker rmi '
+alias dr='docker rm '
+alias dls='docker ps -a '
+alias dlsl='docker ps -l '
+alias dac='sudo  docker attach '
+alias da='sudo  docker attach --sig-proxy=false '
+alias dtop='docker stop '
+alias dstar='docker start '
+alias dstart='docker start '
+alias din='docker inspect '
+alias dp='docker port $(docker ps -l -q)'
+alias db='docker build -t '
+alias dbc='docker build -t --no-cache '
+alias drm='docker ps -l -q | xargs docker stop | xargs docker rm'
+alias dexec='docker exec '
+dexl() { docker exec -i -t $(docker ps -l -q)  bash ;}
+dex() { docker exec -i -t $@ bash ;}
+alias dlog='docker logs $(docker ps -l -q)'
+alias drun='docker run -i -t -name '
+alias ubuntu='docker run -i -t ubuntu /bin/bash'
+alias dport='docker port $(docker ps -l -q)'
