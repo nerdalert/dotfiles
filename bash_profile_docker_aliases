@@ -42,6 +42,14 @@ alias dr='docker rm '
 alias dls='docker ps -a '
 alias dlsl='docker ps -l '
 alias dac='sudo  docker attach '
+
+# Inspect the last container created
+alias dmin='docker-machine inspect $(docker-machine ls | tail -1 | awk "{print $1}")'
+# Delete all containers matching the passed paramater
+# Example: "delcon ubuntu" or 'anything matching in docker ps output'
+delcon() { docker rm -f $(docker ps  -a | grep $@ | awk '{print $1}') ;}
+# Stop all containers matching the passed paramater.
+stopcon() { docker stop $(docker ps  -a | grep $@ | awk '{print $1}') ;}
 alias da='sudo  docker attach --sig-proxy=false '
 alias dtop='docker stop '
 alias dstar='docker start '
@@ -56,5 +64,22 @@ dexl() { docker exec -i -t $(docker ps -l -q)  bash ;}
 dex() { docker exec -i -t $@ bash ;}
 alias dlog='docker logs $(docker ps -l -q)'
 alias drun='docker run -i -t -name '
-alias ubuntu='docker run -i -t ubuntu /bin/bash'
 alias dport='docker port $(docker ps -l -q)'
+
+# On demand foreground OS bash shells that delete on shell exit
+alias ubunturm='docker run -it --rm ubuntu'
+alias debianrm='docker run -it --rm debian'
+alias fedorarm='docker run -it --rm fedora'
+alias centosrm='docker run -it --rm centos'
+
+# On demand foreground OS bash shells that stops on shell exit
+alias ubuntu='docker run -it ubuntu'
+alias debian='docker run -it debian'
+alias fedora='docker run -it fedora'
+alias centos='docker run -it centos'
+
+# On demand background OS bash shells running in daemon mode
+alias ubuntud='docker run -itd ubuntu'
+alias debiand='docker run -itd debian'
+alias fedorad='docker run -itd fedora'
+alias centosd='docker run -itd centos'
