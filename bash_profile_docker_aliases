@@ -71,15 +71,16 @@ alias ubunturm='docker run -it --rm ubuntu'
 alias debianrm='docker run -it --rm debian'
 alias fedorarm='docker run -it --rm fedora'
 alias centosrm='docker run -it --rm centos'
+alias busyrm='docker run -it --rm busybox'
 
 # On demand foreground OS bash shells that stops on shell exit
 alias ubuntu='docker run -it ubuntu'
 alias debian='docker run -it debian'
 alias fedora='docker run -it fedora'
-alias centos='docker run -it centos'
+alias busy='docker run -it busybox'
 
 # On demand background OS bash shells running in daemon mode
 alias ubuntud='docker run -itd ubuntu'
 alias debiand='docker run -itd debian'
 alias fedorad='docker run -itd fedora'
-alias centosd='docker run -itd centos'
+alias busyd='docker run -itd busybox'
