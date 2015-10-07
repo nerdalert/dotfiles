@@ -72,15 +72,22 @@ alias debianrm='docker run -it --rm debian'
 alias fedorarm='docker run -it --rm fedora'
 alias centosrm='docker run -it --rm centos'
 alias busyrm='docker run -it --rm busybox'
+alias nethostrm='docker run -it --rm --net=host ubuntu'
 
 # On demand foreground OS bash shells that stops on shell exit
 alias ubuntu='docker run -it ubuntu'
 alias debian='docker run -it debian'
 alias fedora='docker run -it fedora'
 alias busy='docker run -it busybox'
+alias nethost='docker run -it --net=host ubuntu'
 
 # On demand background OS bash shells running in daemon mode
 alias ubuntud='docker run -itd ubuntu'
 alias debiand='docker run -itd debian'
 alias fedorad='docker run -itd fedora'
 alias busyd='docker run -itd busybox'
+
+# Delete all containers matching the passed paramater
+delimg() { docker rmi $(docker images | grep $@ | awk '{print $3}') ;}
+# Delete all with a <none> label
+delnone() { docker rmi $(docker images | grep none | awk '{print $3}') ;}
