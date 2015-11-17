@@ -1,3 +1,15 @@
+# start shells in the following OS's (rm means it will delete when you exit the shell, see the mittens example for persistance):
+docker run -it --rm ubuntu
+docker run -it --rm debian
+docker run -it --rm fedora
+docker run -it --rm centos
+docker run -it --rm busybox
+
+# start a container named mittens that will run in the background
+docker run -itd --name mittens ubuntu
+
+# now attach to the shell of the newly created container by name (ID also valid)
+docker attach mittens
 
 # start a stopped container by ID or name
 docker start <container_id or name>
