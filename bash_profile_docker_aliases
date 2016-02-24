@@ -32,6 +32,12 @@ alias dmin='docker-machine inspect $(docker-machine ls | tail -1 | awk "{print $
 # Remove the last container created
 alias dmrm='docker-machine rm $(docker-machine ls | tail -1 | awk "{print $1}")'
 
+# Docker Network aliases
+alias dnr='docker network rm'
+alias dnl='docker network ls'
+alias dnc='docker network create'
+alias dni='docker network inspect'
+
 # Docker Engine aliases
 alias d='docker '
 alias di='docker images'
