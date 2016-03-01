@@ -348,7 +348,7 @@ run() {
     # stop debugging from here
 #    set +x
     echo ''
-    echo 'INFO: --------->  All tests are completed'
+    echo 'INFO --------->  All tests are completed'
     echo 'WARN --------->  Deleting ALL containers and networks the test created in 5 seconds'
     echo 'WARN --------->  Hit ctrl^c to abort if you want to view the created networks and links prior to deletion and rerun the script to clean them up.'
     sleep 5
