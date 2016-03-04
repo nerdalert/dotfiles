@@ -21,10 +21,14 @@ alias dockipl='docker inspect --format "{{ .NetworkSettings.IPAddress }}" $(dock
 alias dip='docker inspect --format "{{ .NetworkSettings.IPAddress }}" '
 alias dipl='docker inspect --format "{{ .NetworkSettings.IPAddress }}" $(docker ps -q)'
 
-# Start/Stop the last container created
+# Start/Stop the  containers
 alias mstar1='docker-machine start $(docker-machine ls | tail -1 | awk "{print $1}")'
 alias mstop1='docker-machine stop $(docker-machine ls | tail -1 | awk "{print $1}")'
 alias dmk='docker-machine kill'
+# Gracefully stop and delete all container
+alias dra='docker rm $(docker stop $(docker ps -aq))'
+# Kill and delete all containers
+alias drk='docker rm $(docker kill $(docker ps -aq))'
 
 # Inspect the last container created
 alias dmin='docker-machine inspect $(docker-machine ls | tail -1 | awk "{print $1}")'
