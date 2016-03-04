@@ -146,3 +146,8 @@ docker stop <image_name> && docker rm flow_img
 # list the container ip for Mac boot2docker 
 boot2docker ip
 
+# Gracefully stop and delete all container
+docker rm $(docker stop $(docker ps -aq))
+
+# Kill and delete all containers
+docker rm $(docker kill $(docker ps -aq))
