@@ -49,7 +49,6 @@ verify_results() {
     ACTUAL_NETWORKS=$(docker network ls | grep "macvlan\|ipvlan" | wc -l)
     ACTUAL_CONTAINERS=$(docker ps | grep "debian\|alpine" | wc -l)
     ACTUAL_LINK_COUNT=$(ip link | grep @${ETH} | wc -l)
-    # TODO: Validate
     # ((POST_LINK_COUNT =${INIT_LINK_COUNT} + 2)) # Subtract the two manual links for .1q tests
     # MANUAL_8021Q_LINK=$(ip link | grep "${ETH}.28\|${ETH}.29" | wc -l)
     echo "#########################################################################################"
