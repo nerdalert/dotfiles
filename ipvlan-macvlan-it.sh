@@ -12,8 +12,8 @@ ETH=${ETH:-eth0}
 RANDOM_LINK_NAME="foo"
 PAUSE_SECONDS=1
 # Expected Results:
-EXPECTED_NETWORKS=53
-EXPECTED_CONTAINERS=120
+EXPECTED_NETWORKS=54
+EXPECTED_CONTAINERS=123
 EXPECTED_MANUAL_8021Q_LINK=2
 
 command_exists() {
@@ -37,7 +37,7 @@ check_setup() {
         exit 1
     fi
     echo 'WARN ----->  Prior to the test, the script will now ensure there are no Docker networks named [ ipnet ] or [ macnet ]'
-    echo 'WARN ----->  To abort deleting those Docker networks hit ctrl^c within the next 5 seconds..'
+    echo 'INFO ----->  To abort deleting those Docker networks hit ctrl^c within the next 5 seconds..'
     sleep ${PAUSE_SECONDS}
     INIT_LINK_COUNT=$(ip link | grep @${ETH} | wc -l)
     final_cleanup
