@@ -72,8 +72,7 @@ alias din='docker inspect '
 alias dp='docker port $(docker ps -l -q)'
 alias db='docker build -t '
 alias dbc='docker build -t --no-cache '
-alias drm='docker rm -f `docker ps -ql`'
-
+alias drl='docker rm -f `docker ps -ql`'
 alias drall='docker rm -f `docker ps -qa`'
 alias dexec='docker exec '
 dexl() { docker exec -i -t $(docker ps -l -q) /bin/sh ;}
