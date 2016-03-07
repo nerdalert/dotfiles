@@ -33,7 +33,10 @@ docker inspect mittens
 # parse using grep for interesting fields like so to get a container IP address:
 docker inspect mittens | grep IPAddress
 
-# To cleanup all of those untagged images (Those labeled with <none>)
+# Delete all images named <none> (untagged images)
+delnone() { docker rmi $(docker images | grep none | awk '{print $3}') ;}
+
+# Or another way cleanup all of those untagged images (Those labeled with <none>)
 docker images -a
 # REPOSITORY                          TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
 # <none>                              <none>              4008b117428e        17 hours ago        210.2 MB
@@ -42,6 +45,9 @@ docker images -a
 
 # If a container is using it or there is a conflict it will abort the current image delta and move on to the next.
 docker rmi $(docker images -a | grep "^<none>" | awk '{print $3}')
+
+# Delete all containers matching the passed paramater; e.g. 'delimg foo' deletes all images named 'foo'
+delimg() { docker rmi $(docker images | grep $@ | awk '{print $3}') ;}
 
 # to remove a container    
 docker rm  <container_id or name>
@@ -55,27 +61,47 @@ docker stop $(docker ps -q)
 # view the last container to be started
 docker ps -l
 
-# get the container ID column only
+# Get the container ID column only
 docker ps -l -q
+
+# Get the container count of all running containers
+docker ps -q | wc -l
+
+# Get the container count of all running and stopped containers
+docker ps -qa | wc -l
 
 # stop the last container created
 docker stop $(docker ps -l -q) 
 
-#stop and delete the last container created
+# Stop and delete the last container created
+docker rm -f `docker ps -ql`
+# or
 docker ps -l -q | xargs docker stop | xargs docker rm
 
 # delete the container name
 docker rm <container_id or name>
 
-# Remove all containers    
-docker rm $(docker ps -a -q)
+# Remove the last container created (running or stopped)
+docker rm -f $(docker ps -ql)
+
+# Remove all containers forcefully if they are running -f is nice (fastest)
+docker rm -f `docker ps -qa`
 
 # remove all containers
 docker rm $(docker ps -a -q)
 #... or ...
 docker ps -a -q | xargs docker rm
 
-# another way to stop and delete the last container created
+# List all network IDs only
+docker network ls -q
+
+# Inspect all networks
+docker network inspect $(docker network ls -q)
+
+# Delete all networks
+docker network rm $(docker network ls -q)'
+
+# another way to stop and delete the last container created (-f above is still fastest/simplest)
 docker ps -l -q | awk '{ print $1 }' | xargs docker stop | awk '{ print $1 }' | xargs docker rm
 
 # When you 'docker run' an image and it fails at runtime, it will appear as Exited for example:"Exited (0) 8 days ago"
