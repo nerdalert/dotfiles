@@ -145,14 +145,11 @@ docker rmi $(docker images | grep centos | awk '{ print $2 }')
 # stop and remove all running containers. similar approach due to the consistent API to containers as prior with images. (status=='Up')
 docker ps -a | grep Up | awk '{ print $6 }' | xargs docker stop
 
-# upgrade to the latest  Mac boot2docker Docker image
-boot2docker upgrade
-
-# list the container ip for Mac boot2docker 
-boot2docker status
-
 #stop and delete running containers
 docker ps -l -q | awk '{ print $1 }' | xargs docker stop | awk '{ print $1 }' | xargs docker rm
+
+# start all stopped containers (after a reboot for example)
+docker start $(docker ps -qa)
 
 #Attach to a bash shell in the last started container
 dockexecl() { docker exec -i -t $(docker ps -l -q) bash ;}
@@ -168,9 +165,6 @@ docker inspect --format "{{ .NetworkSettings.IPAddress }}" $(docker ps -ql)
 
 #stop and delete a container by name
 docker stop <image_name> && docker rm flow_img
-
-# list the container ip for Mac boot2docker 
-boot2docker ip
 
 # Gracefully stop and delete all container
 docker rm $(docker stop $(docker ps -aq))
