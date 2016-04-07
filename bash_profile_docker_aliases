@@ -66,8 +66,7 @@ delcon() { docker rm -f $(docker ps  -a | grep $@ | awk '{print $1}') ;}
 stopcon() { docker stop $(docker ps  -a | grep $@ | awk '{print $1}') ;}
 alias da='sudo  docker attach --sig-proxy=false '
 alias dtop='docker stop '
-alias dstar='docker start '
-alias dstart='docker start '
+alias start='docker start $(docker ps -qa)'
 alias din='docker inspect '
 alias dp='docker port $(docker ps -l -q)'
 alias db='docker build -t '
