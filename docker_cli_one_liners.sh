@@ -163,6 +163,14 @@ docker inspect --format "{{ .NetworkSettings.IPAddress }}" $(docker ps -q)
 #Get the IP address of the last started container
 docker inspect --format "{{ .NetworkSettings.IPAddress }}" $(docker ps -ql)
 
+# If the network is a network you created simply using grep on docker inspect is quick
+$ docker network inspect  mcv1  | grep -i ipv4
+       "IPv4Address": "192.168.1.106/24",
+
+# Or look at the gateway of the network
+$ docker network inspect  mcv1  | grep Gateway
+       "Gateway": "192.168.1.1/24"
+       
 #stop and delete a container by name
 docker stop <image_name> && docker rm flow_img
 
