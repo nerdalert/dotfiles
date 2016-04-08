@@ -19,7 +19,7 @@ dockexec() { docker exec -i -t $@ bash ;}
 alias dockip='docker inspect --format "{{ .NetworkSettings.IPAddress }}"'
 alias dockipl='docker inspect --format "{{ .NetworkSettings.IPAddress }}" $(docker ps -q)'
 alias dip='docker inspect --format "{{ .NetworkSettings.IPAddress }}" '
-alias dipl='docker inspect --format "{{ .NetworkSettings.IPAddress }}" $(docker ps -q)'
+alias dipl='docker inspect  $(docker ps -qq) | grep IPAddress'
 
 # Start/Stop the  containers
 alias mstar1='docker-machine start $(docker-machine ls | tail -1 | awk "{print $1}")'
