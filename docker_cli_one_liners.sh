@@ -15,15 +15,15 @@ docker attach mittens
 docker start <container_id or name>
 docker start mittens 
 
-# stop a container by ID or name
+# Stop a container by ID or name
 docker stop <container_id or name>
 docker stop mittens
 
-# start a stopped container by ID or name
+# Start a stopped container by ID or name
 docker start <container_id or name>
 docker start mittens
 
-# attach to a running container.
+# Attach to a running container.
 docker attach <container_id or name>
 docker attach mittens
 
@@ -32,6 +32,12 @@ docker inspect <container_id or name>
 docker inspect mittens
 # parse using grep for interesting fields like so to get a container IP address:
 docker inspect mittens | grep IPAddress
+
+# Docker inspect the last container created
+docker inspect $(docker ps -qa | head -n1)
+
+# Docker inspect all containers
+docker inspect $(docker ps -qa | head -n1)
 
 # Delete all images named <none> (untagged images)
 delnone() { docker rmi $(docker images | grep none | awk '{print $3}') ;}
