@@ -34,7 +34,7 @@ docker inspect mittens
 docker inspect mittens | grep IPAddress
 
 # Docker inspect the last container created
-docker inspect $(docker ps -qa | head -n1)
+docker inspect $(docker ps -qal)
 
 # Docker inspect all containers
 docker inspect $(docker ps -qa)
