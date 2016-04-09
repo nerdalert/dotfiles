@@ -37,7 +37,7 @@ docker inspect mittens | grep IPAddress
 docker inspect $(docker ps -qa | head -n1)
 
 # Docker inspect all containers
-docker inspect $(docker ps -qa | head -n1)
+docker inspect $(docker ps -qa)
 
 # Delete all images named <none> (untagged images)
 delnone() { docker rmi $(docker images | grep none | awk '{print $3}') ;}
