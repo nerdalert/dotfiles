@@ -56,7 +56,7 @@ alias dlsl='docker ps -l '
 alias dac='sudo  docker attach '
 
 # Docker inspect the last container created
-alias dinl='docker inspect $(docker ps -qa | head -n1)'
+alias dinl='docker inspect $(docker ps -qal)'
 # Docker inspect all containers
 alias dina='docker inspect $(docker ps -qa)'
 
