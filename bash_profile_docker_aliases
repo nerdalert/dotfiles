@@ -55,8 +55,10 @@ alias dls='docker ps -a '
 alias dlsl='docker ps -l '
 alias dac='sudo  docker attach '
 
-# Inspect the last container created
-alias dmin='docker-machine inspect $(docker-machine ls | tail -1 | awk "{print $1}")'
+# Docker inspect the last container created
+alias diln='docker inspect $(docker ps -qa | head -n1)'
+# Docker inspect all containers
+alias dila='docker inspect $(docker ps -qa | head -n1)'
 
 # Delete all containers matching the passed paramater
 # Example: "delcon ubuntu" or 'anything matching in docker ps output'
