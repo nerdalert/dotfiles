@@ -112,3 +112,8 @@ delimg() { docker rmi $(docker images | grep $@ | awk '{print $3}') ;}
 delnone() { docker rmi $(docker images | grep none | awk '{print $3}') ;}
 # Delete all images matching the arg passed after 'delimg none'
 delimg() { docker rmi $(docker images | grep $@ | awk '{print $3}') ;}
+
+# Find all orphaned files, tcp or http connections not being properly closed
+alias conns="sudo lsof -a -p $(pidof docker) | wc -l"
+# Same as above for unclosed threads but more generic name to pid match such as docker-dev-1.x
+alias conns2="lsof -a -p $(ps -e | grep docker | awk '{print $1}' | head -n1) | wc  -l"
