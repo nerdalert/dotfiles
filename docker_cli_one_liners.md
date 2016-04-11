@@ -1,3 +1,4 @@
+```
 # start shells in the following OS's (rm means it will delete when you exit the shell, see the mittens example for persistance):
 docker run -it --rm ubuntu
 docker run -it --rm debian
@@ -93,6 +94,9 @@ docker rm -f $(docker ps -ql)
 # Remove all containers forcefully if they are running -f is nice (fastest)
 docker rm -f `docker ps -qa`
 
+# another way to stop and delete the last container created (-f above is still fastest/simplest)
+docker ps -l -q | awk '{ print $1 }' | xargs docker stop | awk '{ print $1 }' | xargs docker rm
+
 # remove all containers
 docker rm $(docker ps -a -q)
 #... or ...
@@ -106,9 +110,6 @@ docker network inspect $(docker network ls -q)
 
 # Delete all networks
 docker network rm $(docker network ls -q)'
-
-# another way to stop and delete the last container created (-f above is still fastest/simplest)
-docker ps -l -q | awk '{ print $1 }' | xargs docker stop | awk '{ print $1 }' | xargs docker rm
 
 # When you 'docker run' an image and it fails at runtime, it will appear as Exited for example:"Exited (0) 8 days ago"
  # exiited containers are  refered to as "dangling" images.
@@ -185,3 +186,4 @@ docker rm $(docker stop $(docker ps -aq))
 
 # Kill and delete all containers
 docker rm $(docker kill $(docker ps -aq))
+```
