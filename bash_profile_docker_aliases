@@ -53,20 +53,7 @@ alias dri='docker rmi '
 alias dr='docker rm -f '
 alias dls='docker ps -a '
 alias dlsl='docker ps -l '
-alias dac='sudo  docker attach '
-
-# Docker inspect the last container created
-alias dinl='docker inspect $(docker ps -qal)'
-# Docker inspect all containers
-alias dina='docker inspect $(docker ps -qa)'
-
-# Delete all containers matching the passed paramater
-# Example: "delcon ubuntu" or 'anything matching in docker ps output'
-delcon() { docker rm -f $(docker ps  -a | grep $@ | awk '{print $1}') ;}
-
-# Stop all containers matching the passed paramater.
-stopcon() { docker stop $(docker ps  -a | grep $@ | awk '{print $1}') ;}
-alias da='sudo  docker attach --sig-proxy=false '
+alias dcount='docker ps -qa | wc -l'
 alias dtop='docker stop '
 alias start='docker start $(docker ps -qa)'
 alias din='docker inspect '
@@ -81,6 +68,18 @@ dex() { docker exec -i -t $@ /bin/sh ;}
 alias dlog='docker logs $(docker ps -l -q)'
 alias drun='docker run -i -t -name '
 alias dport='docker port $(docker ps -l -q)'
+
+# Docker inspect the last container created
+alias dinl='docker inspect $(docker ps -qal)'
+# Docker inspect all containers
+alias dina='docker inspect $(docker ps -qa)'
+
+# Delete all containers matching the passed paramater
+# Example: "delcon ubuntu" or 'anything matching in docker ps output'
+delcon() { docker rm -f $(docker ps  -a | grep $@ | awk '{print $1}') ;}
+
+# Stop all containers matching the passed paramater.
+stopcon() { docker stop $(docker ps  -a | grep $@ | awk '{print $1}') ;}
 
 # On demand foreground OS bash shells that delete on shell exit
 alias alpinerm='docker run -it --rm alpine /bin/sh'
