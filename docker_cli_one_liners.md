@@ -1,3 +1,7 @@
+# Docker One Liner Examples
+
+### Examples for automating Docker and general lazyness
+
 ```
 # start shells in the following OS's (rm means it will delete when you exit the shell, see the mittens example for persistance):
 docker run -it --rm ubuntu
