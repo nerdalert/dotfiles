@@ -181,7 +181,23 @@ $ docker network inspect  mcv1  | grep -i ipv4
 # Or look at the gateway of the network
 $ docker network inspect  mcv1  | grep Gateway
        "Gateway": "192.168.1.1/24"
-       
+
+# Inspect and parse all IPs for all containers
+$ docker inspect $(docker ps -qa) | grep IPA | grep [0-9]
+         "IPAddress": "192.168.1.130",
+         "IPAddress": "192.168.1.129",
+         "IPAddress": "192.168.1.128",
+
+# Example Docker network inspect all network subnets
+docker network inspect $(docker network ls -q) | grep "Subnet\|Gateway"
+         "Subnet": "172.17.0.0/16",
+         "Gateway": "172.17.0.1"
+         "Subnet": "172.16.86.0/24",
+         "Gateway": "172.16.86.2/24"
+         "Subnet": "192.168.1.0/24",
+         "Gateway": "192.168.1.1/24"
+                    
+
 #stop and delete a container by name
 docker stop <image_name> && docker rm flow_img
 
