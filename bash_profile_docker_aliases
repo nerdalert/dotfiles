@@ -75,10 +75,10 @@ alias dinl='docker inspect $(docker ps -qal)'
 alias dina='docker inspect $(docker ps -qa)'
 
 # Inspect and parse all IPs for all containers
-alias dnip='dina | grep -i IPA | grep 1'
+alias dnip='docker inspect $(docker ps -qa) | grep IPA | grep [0-9]'
 
 # Example Docker network inspect all network subnets
-alias dnsub='docker network inspect $(docker network ls -q) | grep Subnet'
+alias dnnet='docker network inspect $(docker network ls -q) | grep "Subnet\|Gateway"'
 
 # Delete all containers matching the passed paramater
 # Example: "delcon ubuntu" or 'anything matching in docker ps output'
