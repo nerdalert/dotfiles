@@ -45,9 +45,14 @@ alias dnia ='docker network inspect $(docker network ls -q)'
 alias dnrm='docker network rm $(docker network ls -q)'
 
 # Docker Engine aliases
-alias d='docker '
 alias di='docker images'
 alias di5='docker images | head -n5'
+# start/stop all containers
+alias start='docker start $(docker ps -qa)'
+alias stop='docker stop $(docker ps -qa)'
+# start/stop last containers
+alias startl='docker start $(docker ps -qal)'
+alias stopl='docker stop $(docker ps -qal)'
 alias dl='docker logs '
 alias dri='docker rmi '
 alias dr='docker rm -f '
@@ -55,7 +60,6 @@ alias dls='docker ps -a '
 alias dlsl='docker ps -l '
 alias dcount='docker ps -qa | wc -l'
 alias dtop='docker stop '
-alias start='docker start $(docker ps -qa)'
 alias din='docker inspect '
 alias dp='docker port $(docker ps -l -q)'
 alias db='docker build -t '
