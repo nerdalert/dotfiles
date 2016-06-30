@@ -79,7 +79,7 @@ alias dinl='docker inspect $(docker ps -qal)'
 alias dina='docker inspect $(docker ps -qa)'
 
 # Docker service ls
-alias dls=`docker service ls`
+alias dsl=`docker service ls`
 # Docker service inspect
 alias dsi=`docker service inspect `
 
