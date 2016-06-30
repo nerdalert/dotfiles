@@ -79,9 +79,9 @@ alias dinl='docker inspect $(docker ps -qal)'
 alias dina='docker inspect $(docker ps -qa)'
 
 # Docker service ls
-alias dsl=`docker service ls`
+alias dsl='docker service ls'
 # Docker service inspect
-alias dsi=`docker service inspect `
+alias dsi='docker service inspect'
 
 # Inspect and parse all IPs for all containers
 alias dnip='docker inspect $(docker ps -qa) | grep IPA | grep [0-9]'
