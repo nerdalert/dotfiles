@@ -82,6 +82,10 @@ alias dina='docker inspect $(docker ps -qa)'
 alias dsl='docker service ls'
 # Docker service inspect
 alias dsi='docker service inspect'
+# Docker service rm
+alias dsrm='docker service rm '
+# Docker service delete the last
+alias dsrml='docker service rm $(docker service ls -q | head -n1)'
 
 # Inspect and parse all IPs for all containers
 alias dnip='docker inspect $(docker ps -qa) | grep IPA | grep [0-9]'
