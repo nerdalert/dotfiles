@@ -1,7 +1,6 @@
 #!/bin/sh
 #
-# Temp IT testing to be run against ipvlan/macvlan drivers without failure.
-# Notes/PR at: https://gist.github.com/nerdalert/c0363c15d20986633fda
+# Macvlan is merged upstream.
 # Test a number of network creates, deletes and runs. Each testing
 # different scenarios and configuration options for macvlan and ipvlan
 #
