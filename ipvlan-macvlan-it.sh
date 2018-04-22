@@ -841,7 +841,9 @@ subparent_cleanup(){
     ip link del ${RANDOM_LINK_NAME}.19 > /dev/null 2>&1
 }
 
+############################################
 # Script executes from here:
+############################################
 # Ensure the dependencies are satisfied
 check_setup
 # Create networks and containers
