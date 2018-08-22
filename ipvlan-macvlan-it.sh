@@ -10,6 +10,7 @@
 ETH=${ETH:-eth0}
 RANDOM_LINK_NAME="foo"
 PAUSE_SECONDS=1
+
 # Expected Results:
 EXPECTED_NETWORKS=54
 EXPECTED_CONTAINERS=129
@@ -354,6 +355,7 @@ ipv_8021q_l3() {
     docker run --net=ipnet59 --name=ipnet59_test --ip=192.168.59.10 -itd alpine /bin/sh
     #
 }
+
 ###########################################################
 # Macvlan Multi-Subnet 802.1q VLAN Tagged Bridge Mode Tests
 mcv_8021q_multinet() {
@@ -417,7 +419,6 @@ ipv_8021q_multinet_l2() {
     docker run --net=ipnet5 --ip=192.168.5.20 -itd alpine /bin/sh
     docker run --net=ipnet5 --ip=192.168.7.20 -itd alpine /bin/sh
 }
-
 
 #######################################################
 # Ipvlan Multi-Subnet 802.1q VLAN Tagged L3 Mode Tests
